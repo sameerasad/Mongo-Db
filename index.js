@@ -16,3 +16,10 @@ const courseSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   isPublished: Boolean,
 });
+const Course = mongoose.model("course", courseSchema);
+const course = new Course({
+  name: "Sameer Asad",
+  author: "Mosh",
+  tags: ["react", "react-native"],
+  isPublished: true,
+});
