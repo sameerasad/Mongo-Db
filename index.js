@@ -17,9 +17,15 @@ const courseSchema = new mongoose.Schema({
   isPublished: Boolean,
 });
 const Course = mongoose.model("course", courseSchema);
-const course = new Course({
-  name: "Sameer Asad",
-  author: "Mosh",
-  tags: ["react", "react-native"],
-  isPublished: true,
-});
+async function createCourse() {
+  const course = new Course({
+    name: "Sameer Asad",
+    author: "Sameer Asad",
+    tags: ["react", "react-native", "redux", "backend"],
+    isPublished: true,
+  });
+
+  const result = await course.save();
+  console.log(result);
+}
+createCourse();
