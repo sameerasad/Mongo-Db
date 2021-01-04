@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost/playground")
+
+  .connect("mongodb://localhost/playground", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
 
   .then(() => console.log("connected sucessfully"))
-  .catch((err) => console.log("could not connect ", err));
+  .catch((err) => console.error("could not connect ", err));
