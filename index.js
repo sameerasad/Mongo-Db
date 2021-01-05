@@ -29,6 +29,19 @@ async function createCourse() {
   console.log(result);
 }
 async function getCourse() {
+  /*comparision operator in monge and also available in mongoose bcz mongoose built on monge
+
+eq(equal)
+ne (not equal to)
+gt (greater than)
+gte (greater than equal to)
+lt (less than)
+lte (less than equal to)
+in (means)
+nin (not in)
+
+*/
+
   const course = await Course.find({ name: "Sameer Asad" }) //by using find all documents we could find
     .limit(10) //only return two documents
     .sort({ name: 1 }) // sort by names in accending order we also sort by decending order by giving name property value of -1
