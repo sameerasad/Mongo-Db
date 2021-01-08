@@ -31,9 +31,9 @@ async function createMovies() {
 
 async function getMovies() {
   try {
-    const result = await Movies.find().and([
-      { name: "harry potter", price: 50 },
-    ]);
+    const result = await Movies.find()
+      .and([{ name: "harry potter", price: 50 }])
+      .count(); //return the counting of documents which are at the given criteria
     console.log(result);
   } catch (err) {
     console.log(err);
