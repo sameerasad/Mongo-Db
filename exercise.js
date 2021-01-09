@@ -31,9 +31,9 @@ async function createMovies() {
 
 async function getMovies() {
   try {
-    const result = await Movies.find()
-      .and([{ name: "harry potter", price: 50 }])
-      .count(); //return the counting of documents which are at the given criteria
+    const result = await Movies.find({ name: /^harry/i }) //regular expresion to find document contain harry at the beginning "i" use at end to make expresion string insensitive
+      .find({ name: /potter$/i }) //regular expresion to find document contain pootter at the ending $ sign represent the ending ogf string
+      .find({ name: /.*potter.*/i }); // find the document  in which potter could be anywhere begin,end or middle
     console.log(result);
   } catch (err) {
     console.log(err);
