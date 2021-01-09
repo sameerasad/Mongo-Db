@@ -30,10 +30,17 @@ async function createMovies() {
 }
 
 async function getMovies() {
+  const pageNumber = 2;
+  const pageSize = 10;
+  /* /api/course?pageNumber=2&pageSize =10 in rest full api it will come from 
+  querry string parameter in order to apliment pagination we need to skip the previous pages */
+
   try {
     const result = await Movies.find({ name: /^harry/i }) //regular expresion to find document contain harry at the beginning "i" use at end to make expresion string insensitive
       .find({ name: /potter$/i }) //regular expresion to find document contain pootter at the ending $ sign represent the ending ogf string
-      .find({ name: /.*potter.*/i }); // find the document  in which potter could be anywhere begin,end or middle
+      .find({ name: /.*potter.*/i }) // find the document  in which potter could be anywhere begin,end or middle
+      .skip((pageNumber - 1) * pageSize)
+      .limit(pageSize);
     console.log(result);
   } catch (err) {
     console.log(err);
