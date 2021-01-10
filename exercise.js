@@ -47,4 +47,4 @@ async function getMovies() {
   }
 }
 
-getMovies();
+createMovies();
