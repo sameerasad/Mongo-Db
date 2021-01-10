@@ -19,7 +19,7 @@ const Movies = mongoose.model("movies", moviesSchema);
 async function createMovies() {
   const movies = new Movies({
     name: "harry potter1",
-    price: 60,
+    price: 70,
     genre: "fiction",
     availability: true,
   });
