@@ -18,8 +18,8 @@ const moviesSchema = new mongoose.Schema({
 const Movies = mongoose.model("movies", moviesSchema);
 async function createMovies() {
   const movies = new Movies({
-    name: "fateh",
-    price: 60,
+    name: "fateh 1443",
+    price: 120,
     genre: "history",
     availability: true,
   });
@@ -42,4 +42,4 @@ async function getMovies() {
   }
 }
 
-getMovies();
+createMovies();
