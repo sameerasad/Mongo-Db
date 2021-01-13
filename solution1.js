@@ -23,7 +23,7 @@ const Course = mongoose.model("courses", schema);
 async function createCourses() {
   const course = new Course({
     tags: ["frontend"],
-    name: "react-native",
+    name: "html-css",
     author: "mosh",
     isPublished: true,
     price: 40,
@@ -40,4 +40,4 @@ async function getCourses() {
   console.log(result);
 }
 
-getCourses();
+createCourses();
