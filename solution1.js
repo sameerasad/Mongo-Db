@@ -32,12 +32,16 @@ async function createCourses() {
   const result = await course.save();
   console.log(result);
 }
-
+// this function is responsible for list of course
 async function getCourses() {
-  const result = await Course.find({ isPublished: true, tags: "backend" })
+  return await Course.find({ isPublished: true, tags: "backend" })
     .sort({ name: 1 })
     .select({ name: 1, author: 1 });
-  console.log(result);
 }
 
-createCourses();
+//this function is responsible for the display of list of sort courses
+async function displayCourses() {
+  const result = await getCourses();
+  console.log(result);
+}
+displayCourses();
