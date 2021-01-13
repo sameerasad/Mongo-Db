@@ -34,7 +34,9 @@ async function getMovies() {
   querry string parameter in order to apliment pagination we need to skip the previous pages */
 
   try {
-    const result = await Movies.find().count();
+    const result = await Movies.find({ availability: true })
+      .select({ name: 1, genre: 1 })
+      .sort({ price: 1 });
 
     console.log(result);
   } catch (err) {
@@ -42,4 +44,4 @@ async function getMovies() {
   }
 }
 
-createMovies();
+getMovies();

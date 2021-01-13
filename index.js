@@ -42,10 +42,7 @@ nin (not in)
 
 */
   //logical operators
-  const course = await Course.find().and([
-    { author: "Sameer Asad" },
-    { name: "Sameer Asad" },
-  ]);
+  const course = await Course.find();
 
   console.log(course);
 }
