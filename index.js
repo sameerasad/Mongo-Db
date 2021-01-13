@@ -41,13 +41,9 @@ in (means)
 nin (not in)
 
 */
+  //logical operators
+  const course = await Course.find();
 
-  const course = await Course.find({
-    author: { $in: ["Mosh", "Sameer Asad"] }, //and operator options comes in array form
-    isPublished: { $eq: true },
-  }); //by using find all documents we could find //limit(10) //only return two documents
-  //.sort({ name: 1 }); // sort by names in accending order we also sort by decending order by giving name property value of -1
-  //.select({ name: 1 }); //by select method we could return only selected properties
   console.log(course);
 }
 
