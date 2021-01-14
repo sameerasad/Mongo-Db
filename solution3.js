@@ -20,28 +20,18 @@ const schema = mongoose.Schema({
 
 const Course = mongoose.model("courses", schema);
 
-async function createCourses() {
-  const course = new Course({
-    tags: ["frontend"],
-    name: "html",
-    author: " by mosh",
-    isPublished: true,
-    price: 30,
-  });
-
-  const result = await course.save();
-  console.log(result);
-}
-// this function is responsible for list of course
 async function getCourses() {
-  return await Course.find({ isPublished: true, tags: "backend" })
-    .sort({ name: 1 })
-    .select({ name: 1, author: 1 });
+  return await Course.find({
+    isPublished: true,
+  })
+    .or([{ price: { $gte: 50 } }, { name: /.*by.*/i }])
+    .sort("-price") //we could write it like {price:-1}in object form
+    .select(" name author"); //we could write it like {name:1,author:1cle}in object form
 }
 
-//this function is responsible for the display of list of sort courses
 async function displayCourses() {
   const result = await getCourses();
   console.log(result);
 }
-createCourses();
+
+displayCourses();
