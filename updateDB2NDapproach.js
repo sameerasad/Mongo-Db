@@ -20,24 +20,10 @@ const schema = mongoose.Schema({
 
 const Course = mongoose.model("courses", schema);
 
-async function updateCourse(id) {
-  //2nd
-  //update first
-  //update directly
-  // optionally get the updated document as well
-  //let use 1st approach
-
-  let result = await Course.findByIdAndUpdate(
-    { _id: id },
-    {
-      $set: {
-        isPublished: true,
-        author: "json",
-      },
-    },
-    { new: true }
-  );
-
+async function deleteDocs() {
+  // const result = await Course.deleteOne({_id:id}) suppose if pass afilter {isPublished:fales}instead of {_id:id} there could be many false published docs, this method delete only one
+  //const result = await Course.deleteMany({ _id: id })suppose if pass afilter {isPublished:fales}instead of {_id:id} there could be many false published docs, this method delete  all docs match the given filter
+  const result = await Course.findByIdAndRemove(id); //this method allow us to see the remove docs on the console
   console.log(result);
 }
 
